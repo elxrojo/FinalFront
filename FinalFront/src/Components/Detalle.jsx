@@ -21,17 +21,15 @@ export default function Detalle(){
             <h3>{odontoDetails.website}</h3>
             <h3>{odontoDetails.email}</h3>
             <h3>{odontoDetails.phone}</h3>
-            {/* <div>
+            <div>
                 <p>Trabaja en:</p>
-                <p>{odontoDetails.company.name}</p>
+                <p>{odontoDetails.company?.name}</p>
             </div>
             <div>
                 <p>Ciudad:</p>
-                <p>{odontoDetails.address.city}</p>
-            </div> */}
+                <p>{odontoDetails.address?.city}</p>
+            </div>
 
         </div>
     )
 }
-
-// ! Resolver problema, no se puede renderizar el objeto de un objeto

@@ -1,62 +1,65 @@
-import { useState } from "react"
-import Aviso from "./Aviso"
+import { useEffect, useState } from "react"
+import { toast } from 'sonner'
 
 export default function Contacto(){
-    const [nombre, setNombre] = useState('')
-    const [correo, setCorreo] = useState('')
-
-    const [ERRnombre, setERRnombre] = useState(false)
-    const [ERRcorreo, setERRcorreo] = useState(false)
-    const [todoJoia, setTodoJoia] = useState(false)
 
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function ceckealoWei() {        
+    const [nombre, setNombre] = useState('')
+    const [correo, setCorreo] = useState('')
+    const [errores, setErrores] = useState([])
 
-        if(nombre.length < 5){
-            setERRnombre(true)
-        }else{
-            setERRnombre(false)
-        }
-        
-        if(!regex.test(correo)){
-            setERRcorreo(true)
-        }else{
-            setERRcorreo(false)
-        }
-        if((ERRcorreo && ERRnombre)){
-            setTodoJoia(true)
 
-            setTimeout(() => {
-                setCorreo('')
-                setNombre('')
-                setTodoJoia(false)
-            }, 5000);
+    function nombreEstaBien() {
+        setErrores(prevErrores => {
+        if (nombre.length < 6) {
+            return [...prevErrores, 'Nombre inválido. Debe tener al menos 6 letras'];
         }
-// ! Corregir error de renderizado del to joia 
+            return prevErrores;
+        });
     }
 
+    function correoEstaBien(){
+        setErrores(prevErrores => {
+            if ((!regex.test(correo) || correo.length <= 0)) {
+                return [...prevErrores, 'Correo inválido. Intente con uno válido'];
+            }
+            return prevErrores;
+        });
+    }
+
+    function mostrarErrores(){
+        setErrores([])
+        correoEstaBien()
+        nombreEstaBien()         
+
+    }
+
+    useEffect(()=>{
+        errores.map((error)=>{
+            toast.error(error)
+        })        
+        if (errores.length === 0) {
+            toast.success('Si funciona crack') 
+        }
+
+    },[errores])
 
     return (
         <form onSubmit={(e) => e.preventDefault()} noValidate>
             <label>Nombre</label>
             <input type="text"
             value={nombre}
-            onChange={(e)=> setNombre(e.target.value )}
+            onChange={(e)=> setNombre(e.target.value)}
             />
 
             <label>Email</label>
             <input type="email"
             value={correo}
-            onChange={(e)=> setCorreo(e.target.value) }
+            onChange={(e)=> setCorreo(e.target.value)}
             />
 
-            <button onClick={()=>ceckealoWei()}>Enviar datita</button>
-
-            {ERRnombre? <Aviso msg={'❌ Nombre inválido. Debe tener al menos 6 letras'} isSucces={false}/> : undefined}
-            {ERRcorreo? <Aviso msg={'❌ Correo inválido. Intente con uno válido :v'} isSucces={false}/> : undefined}
-            {todoJoia? <Aviso msg={'✔️ Correo enviado correctamente!'} isSucces={false}/> : undefined}
-
+            <button onClick={mostrarErrores}>Enviar datita</button>
         </form>
     )
 }
