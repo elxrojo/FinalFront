@@ -1,7 +1,17 @@
+import { OdontoContext } from "../Contexts/OdontoContext"
 import CardList from "./CardList"
+import { useContext} from "react"
 
 export default function Favoritos(){
-    const odontosLikeados = JSON.parse(localStorage.getItem('odontos'))
+    const {favsOdontosLS} = useContext(OdontoContext)
 
-    return(<CardList odontos={odontosLikeados}/>)
+    return( 
+        <>
+            {favsOdontosLS.length > 0 ?
+            <CardList odontos={favsOdontosLS}/>
+            :
+            <h1>Aun no has agregado a tus odontologos favoritos!</h1>
+            }
+        </>
+    )
 }

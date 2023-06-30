@@ -1,15 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../Contexts/ThemeContext";
 import styles from "../Styles/ComponentStyles/Card.module.css";
 
 export default function Card({userDetail,likeFunct,id}){
     const {theme} = useContext(ThemeContext)
-    const odontosLikeados = JSON.parse(localStorage.getItem('odontos')).some((odonto)=> odonto.id === id)
+    const [like, setLike] = useState(JSON.parse(localStorage.getItem('odontos')).some((odonto)=> odonto.id === id))
 
-    // useEffect(()=>{
-    //     odontosLikeados
-    // },[])
+    const handleLike = () => {
+        likeFunct(id);
+        setLike(!like);
+    };
+
 
     return (
         <div className={styles.card} style={{background: theme.color1, color: theme.colorLetra}}>
@@ -33,9 +35,7 @@ export default function Card({userDetail,likeFunct,id}){
                     </p>
                 </div>
             </Link>
-                <button  style={{background:theme.color2, color: theme.colorLetra}} onClick={()=>{
-                    likeFunct(id)
-                }}>{odontosLikeados? 'Quitar' : 'Guardar'}</button>
+                <button  style={{background:theme.color2, color: theme.colorLetra}} onClick={handleLike}>{like? 'Quitar' : 'Guardar'}</button>
         </div>
     )
 }

@@ -5,6 +5,8 @@ export const OdontoContext = createContext()
 export default function OdontoProvider(props){
     const [odontos, setOdontos] = useState([])
     const [favsOdontos, setFavsOdontos] = useState([])
+    const [favsOdontosLS, setFavsOdontosLS] = useState(JSON.parse(localStorage.getItem('odontos')))
+
 
     async function fetching() {
         const odontosFetch = await (await fetch('https://jsonplaceholder.typicode.com/users')).json()
@@ -23,6 +25,7 @@ export default function OdontoProvider(props){
 
     useEffect(()=>{
         localStorage.setItem('odontos',JSON.stringify(favsOdontos))
+        setFavsOdontosLS(favsOdontos)
     },[favsOdontos])
 
 
@@ -40,6 +43,7 @@ export default function OdontoProvider(props){
     }
 
     const value ={
+        favsOdontosLS,
         odontos,
         like
     }
@@ -51,3 +55,4 @@ export default function OdontoProvider(props){
     )
 
 }
+

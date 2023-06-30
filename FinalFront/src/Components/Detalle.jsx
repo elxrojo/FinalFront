@@ -10,6 +10,14 @@ export default function Detalle(){
     const [odontoDetails, setOdontoDetails] = useState('')
     const {id} = useParams()
 
+
+    const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('odontos')).some((odonto)=> odonto.id === id))
+
+    const handleLike = () => {
+        like(odontoDetails.id);
+        setIsLiked(!isLiked);
+    };
+
     async function fetching(){
         const odontoObtenido = await (await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)).json()
         console.log(odontoObtenido);
@@ -73,7 +81,9 @@ export default function Detalle(){
 
             </div>
 
-            <button style={{background: theme.color2, color: theme.colorLetra}} onClick={()=>like(odontoDetails.id)}>Guardar</button>
+            <button style={{background: theme.color2, color: theme.colorLetra}} onClick={()=>handleLike()}>
+                {isLiked?  'Guardar': 'Quitar' }
+            </button>
         </div>
 
         </div>

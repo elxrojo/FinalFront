@@ -8,6 +8,7 @@ export default function Contacto(){
     const [nombre, setNombre] = useState('')
     const [correo, setCorreo] = useState('')
     const [errores, setErrores] = useState([])
+    const [validado, setValidado] = useState(false);
 
 
     function nombreEstaBien() {
@@ -32,18 +33,18 @@ export default function Contacto(){
         setErrores([])
         correoEstaBien()
         nombreEstaBien()         
-
+        setValidado(true);
     }
 
-    useEffect(()=>{
-        errores.map((error)=>{
-            toast.error(error)
-        })        
-        if (errores.length === 0) {
-            toast.success('Si funciona crack') 
+    useEffect(() => {
+        errores.map((error) => {
+            toast.error(error);
+        });
+    
+        if (!errores.some((error) => error) && validado) {
+            toast.success('¡Funciona!');
         }
-
-    },[errores])
+    }, [errores, validado]);
 
     return (
         <form onSubmit={(e) => e.preventDefault()} noValidate>
