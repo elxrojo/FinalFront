@@ -39,4 +39,16 @@
   border-bottom-right-radius: 0.9rem;
   font-weight: bold;
   font-size: 1.25rem;
+}
+
+.card:hover {
+  scale: 1.05;
+  transition: 0.5s;
+  box-shadow: 19px 20px 0px -1px rgba(0, 0, 0, 0.79);
+}
+
+.card:active {
+  scale: 1.03;
+  transition: 0.1s;
+  box-shadow: 11px 14px 0px -1px rgba(0, 0, 0, 0.79);
 }/*# sourceMappingURL=Card.module.css.map */
