@@ -1,16 +1,20 @@
 import { useContext } from "react"
 import { OdontoContext } from "../Contexts/OdontoContext"
 import Card from "./Card"
+import style from "../Styles/ComponentStyles/ListCard.module.css"
 
-export default function CardList(){
+export default function CardList({odontos}){
 
-    const {odontos, like} = useContext(OdontoContext)
+    const {like} = useContext(OdontoContext)
 
     return (
-        odontos.map((odonto)=> {
-            return( 
-                <Card userDetail={odonto} likeFunct={like} id={odonto.id} key={odonto.id}/>
-            )
-        })
+        <div className={style.CardList}>
+            {odontos.map((odonto)=> {
+                return( 
+                    <Card userDetail={odonto} likeFunct={like} id={odonto.id} key={odonto.id}/>
+                )
+            })}
+        </div>
+
     )
 }

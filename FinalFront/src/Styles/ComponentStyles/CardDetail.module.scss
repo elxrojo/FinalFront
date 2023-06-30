@@ -1,0 +1,73 @@
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cardDetail{
+    margin: 3rem;
+    min-width: 30rem;
+    max-width: 40rem;
+    border-radius: 1rem;
+    border: 2px solid rgb(111, 111, 111);
+    box-shadow: 9px 10px 0px -1px rgba(0,0,0,0.79);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    .fondoCard{
+        background-color: red;
+        border-top-right-radius: 0.9rem;
+        border-top-left-radius: 0.9rem;
+        padding: 2rem;
+        min-width: 30rem;
+        max-width: 40rem;;
+    }
+
+    .detallesPrincipales{
+        position: relative;
+        top: -1.2rem;
+    }
+
+    .otrosDetalles{
+        display: flex;
+        width: 100%;
+        div{
+            flex-grow: 1;
+            border:2px solid rgb(111, 111, 111);
+            padding: 1rem;
+            margin: 1rem 0 0 0;
+        }
+    }
+
+    img{
+        border: 7px rgb(246, 231, 231) solid;
+        border-radius: 5rem;
+        position: relative;
+        top: -3rem;
+        z-index: 2;
+        box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.4);
+    }
+
+    svg{
+        margin: 0 10px 0 0 ;
+    }
+
+    h2,h3,p{
+        padding: 0.2rem;
+    }
+
+    button{
+        border: 1px solid rgb(111, 111, 111);
+        width: 100%;
+        padding: 1rem 0;
+
+        border-bottom-left-radius: 0.9rem;
+        border-bottom-right-radius: 0.9rem;
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+}

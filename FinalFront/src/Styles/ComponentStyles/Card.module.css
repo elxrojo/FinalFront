@@ -1,0 +1,42 @@
+.card {
+  margin: 2rem;
+  min-width: 23rem;
+  max-width: 35rem;
+  border-radius: 1rem;
+  border: 2px solid rgb(111, 111, 111);
+  box-shadow: 9px 10px 0px -1px rgba(0, 0, 0, 0.79);
+}
+.card .fondoCard {
+  background-color: red;
+  border-top-right-radius: 0.9rem;
+  border-top-left-radius: 0.9rem;
+  padding: 2rem;
+}
+.card img {
+  border: 7px rgb(246, 231, 231) solid;
+  border-radius: 5rem;
+  position: relative;
+  top: -3rem;
+  z-index: 2;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+}
+.card svg {
+  margin: 0 10px;
+}
+.card .texto {
+  position: relative;
+  top: -1.2rem;
+}
+.card .texto h2, .card .texto h3, .card .texto p {
+  padding: 0.5rem;
+}
+.card button {
+  border: 1px solid rgb(111, 111, 111);
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  border-bottom-left-radius: 0.9rem;
+  border-bottom-right-radius: 0.9rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+}/*# sourceMappingURL=Card.module.css.map */

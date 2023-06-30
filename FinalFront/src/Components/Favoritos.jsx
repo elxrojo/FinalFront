@@ -1,3 +1,7 @@
+import CardList from "./CardList"
+
 export default function Favoritos(){
-    return
+    const odontosLikeados = JSON.parse(localStorage.getItem('odontos'))
+
+    return(<CardList odontos={odontosLikeados}/>)
 }

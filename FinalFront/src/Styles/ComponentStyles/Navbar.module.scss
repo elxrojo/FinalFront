@@ -1,0 +1,34 @@
+.nav{
+    border-bottom: 2px solid rgba(255, 0, 0, 0.758);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+
+    div{
+        display: flex;
+        align-content: center;
+
+        a{
+            font-weight: bolder;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+        }
+    }
+    .direcciones{
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+    }
+    button{
+        padding: 1rem;
+        border-radius: 5rem;
+        border: none;
+        transition: 0.5s;
+        // box-shadow: 5px 5px 0px -1px rgba(0,0,0,0.79);
+    }
+}
