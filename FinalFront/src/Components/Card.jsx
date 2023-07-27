@@ -18,7 +18,7 @@ export default function Card({userDetail,likeFunct,id}){
             <Link to={`/details/${id}`} style={{color: theme.colorLetra}}>
                 <div>
                     <div className={styles.fondoCard}></div>
-                    <img src="./src/asset/user.png" alt="imagen usuario" />
+                    <img src="./user.png" alt="imagen usuario" />
                     <div className={styles.texto}>
                         <h2>{userDetail.name}</h2>
                         <h3>

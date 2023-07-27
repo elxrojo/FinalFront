@@ -11,7 +11,9 @@ export default function Detalle(){
     const {id} = useParams()
 
 
-    const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('odontos')).some((odonto)=> odonto.id === id))
+    const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('odontos')).some((odonto)=>{
+        return odonto.id === +id
+    }))
 
     const handleLike = () => {
         like(odontoDetails.id);
@@ -26,13 +28,16 @@ export default function Detalle(){
 
     useEffect(() => {
         fetching()
+        console.log(JSON.parse(localStorage.getItem('odontos')).some((odonto)=>{
+            return odonto.id === id
+        }));
     },[])
 
     return(
         <div className={style.contenedor}>
             <div className={style.cardDetail} style={{background:theme.color1, color: theme.colorLetra}}>
             <div className={style.fondoCard}></div>
-            <img src="../src/asset/user.png" alt="imagen usuario" />
+            <img src="../user.png" alt="imagen usuario" />
             <div className={style.detallesPrincipales}>
                 <h1>{odontoDetails.name}</h1>
 
@@ -82,7 +87,7 @@ export default function Detalle(){
             </div>
 
             <button style={{background: theme.color2, color: theme.colorLetra}} onClick={()=>handleLike()}>
-                {isLiked?  'Guardar': 'Quitar' }
+                {isLiked?  'Quitar' : 'Guardar'  }
             </button>
         </div>
 
