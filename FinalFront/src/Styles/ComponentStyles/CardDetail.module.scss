@@ -19,12 +19,13 @@
 
 
     .fondoCard{
+        display: flex;
         background-color: red;
         border-top-right-radius: 0.9rem;
         border-top-left-radius: 0.9rem;
         padding: 2rem;
         min-width: 30rem;
-        max-width: 40rem;;
+        max-width: 40rem;
     }
 
     .detallesPrincipales{

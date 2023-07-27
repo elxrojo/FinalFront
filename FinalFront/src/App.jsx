@@ -16,6 +16,7 @@ function App() {
     if(theme === themes.dark) setTheme(themes.light)
     if(theme === themes.light) setTheme(themes.dark)
   }
+    // const [theme, setTheme] = useState(localStorage.getItem())
   
   /* -------------------------------------------------------------------------- */
   /*     La funcion de  guardar el tema en local storage fallo exitosamente!    */
