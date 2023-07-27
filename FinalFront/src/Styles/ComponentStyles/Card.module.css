@@ -5,6 +5,7 @@
   border-radius: 1rem;
   border: 2px solid rgb(111, 111, 111);
   box-shadow: 9px 10px 0px -1px rgba(0, 0, 0, 0.79);
+  transition: 0.5s;
 }
 .card .fondoCard {
   background-color: red;
@@ -43,7 +44,6 @@
 
 .card:hover {
   scale: 1.05;
-  transition: 0.5s;
   box-shadow: 19px 20px 0px -1px rgba(0, 0, 0, 0.79);
 }
 
