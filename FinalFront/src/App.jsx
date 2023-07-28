@@ -4,40 +4,41 @@ import Home from './Components/Home'
 import Contacto from './Components/Contacto'
 import Detalle from './Components/Detalle'
 import Favoritos from './Components/Favoritos'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ThemeContext, themes } from './Contexts/ThemeContext'
 import NavBar from './Components/Navbar'
 import Footer from './Components/Footer'
 
 function App() {
-  const [theme, setTheme] = useState(themes.light)
+  const [theme, setTheme] = useState({})
   
   function themeHandler() {
-    if(theme === themes.dark) setTheme(themes.light)
-    if(theme === themes.light) setTheme(themes.dark)
+    console.log(Object.keys(theme));
+    console.log(Object.keys(themes.dark));
+    console.log(theme === themes.dark);
+
+
+    if(theme.color1 === '#000000'){
+      setTheme(themes.light)
+      localStorage.setItem('theme',JSON.stringify(themes.light))
+    } 
+    if(theme.color1 === '#D9D9D9') {
+      setTheme(themes.dark)
+      localStorage.setItem('theme',JSON.stringify(themes.dark))
+    }    
   }
-    // const [theme, setTheme] = useState(localStorage.getItem())
-  
-  /* -------------------------------------------------------------------------- */
-  /*     La funcion de  guardar el tema en local storage fallo exitosamente!    */
-  /* -------------------------------------------------------------------------- */
 
-  //   useEffect(() => {
-  //     const storedTheme = JSON.parse(localStorage.getItem('theme'));
-  
-  //     console.log(Object.keys(theme).length === 0 && Object.keys(storedTheme).length === 0);
-  
-  //     if (storedTheme) {
-  //       setTheme(storedTheme);
-  //     } else if (Object.keys(theme).length === 0 && Object.keys(storedTheme).length === 0){
-  //       setTheme(themes.light);
-  //     }
-  //   }, []);
-
-  // useEffect(() => {
-  //   console.log("asd");
-  //   localStorage.setItem('theme', JSON.stringify(theme));
-  // }, [theme]);
+  useEffect(() => {
+    const savedTheme = JSON.parse(localStorage.getItem('theme'))
+    console.log(savedTheme);
+    if(savedTheme){
+      console.log('Tengo un tema guardado');
+      setTheme(savedTheme)
+    }else{
+      console.log('No tengo ningun tema guardado');
+      setTheme(themes.light)
+    }
+  }, []);
 
   
 
